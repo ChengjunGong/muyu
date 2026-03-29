@@ -27,7 +27,12 @@ jobs:
       - name: Install system dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y openjdk-17-jdk autoconf autoconf-archive automake libtool pkg-config libffi-dev zlib1g-dev
+          sudo apt-get install -y openjdk-17-jdk \
+            autoconf automake autopoint libtool pkg-config \
+            libffi-dev zlib1g-dev \
+            libltdl-dev texinfo gettext
+          # Ensure aclocal can find libtool macros
+          sudo ln -sf /usr/share/aclocal/libtool.m4 /usr/share/aclocal/
 
       - name: Install Python packages
         run: |
@@ -39,12 +44,14 @@ jobs:
 
       - name: Build APK
         run: |
+          export ACLOCAL_FLAGS="-I /usr/share/aclocal -I /usr/share/aclocal/libtool"
+          export PKG_CONFIG_PATH="/usr/lib/pkgconfig:/usr/share/pkgconfig"
           buildozer android debug
         env:
           BUILDOZER_ANDROID_NDK_API: 21
           BUILDOZER_ANDROID_API: 33
           BUILDOZER_ANDROID_SDK_ROOT: $ANDROID_HOME
-        timeout-minutes: 45
+        timeout-minutes: 50
 
       - name: Upload APK
         if: success()
