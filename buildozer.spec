@@ -9,7 +9,7 @@ source.include_exts = py,png,jpg,kv,atlas,wav,ttf,json,ttc
 
 version = 1.0
 
-requirements = python3.9,kivy
+requirements = python3,sdl2_ttf
 
 orientation = portrait
 fullscreen = 0
@@ -19,9 +19,9 @@ android.minapi = 21
 android.api = 33
 
 p4a.bootstrap = sdl2
+android.accept_sdk_license = True
 
 android.icon.filename = icon.png
-android.accept_sdk_license = True
 
 [buildozer]
 log_level = 2
