@@ -47,7 +47,7 @@ jobs:
           export PKG_CONFIG_PATH="/usr/lib/pkgconfig:/usr/share/pkgconfig"
           buildozer android debug
         env:
-          BUILDOZER_ANDROID_NDK_API: 21
+          BUILDOZER_ANDROID_NDK_API: 25
           BUILDOZER_ANDROID_API: 33
           BUILDOZER_ANDROID_SDK_ROOT: $ANDROID_HOME
         timeout-minutes: 50
