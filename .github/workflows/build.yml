@@ -31,8 +31,7 @@ jobs:
             autoconf automake autopoint libtool pkg-config \
             libffi-dev zlib1g-dev \
             libltdl-dev texinfo gettext
-          # Ensure aclocal can find libtool macros
-          sudo ln -sf /usr/share/aclocal/libtool.m4 /usr/share/aclocal/
+          # libtool.m4 already exists, skip
 
       - name: Install Python packages
         run: |
