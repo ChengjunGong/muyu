@@ -21,6 +21,7 @@ android.api = 33
 p4a.bootstrap = sdl2
 
 android.icon.filename = icon.png
+android.accept_sdk_license = True
 
 [buildozer]
 log_level = 2
